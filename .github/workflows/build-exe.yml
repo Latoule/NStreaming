@@ -3,6 +3,7 @@ name: Build EXE
 on:
   push:
     branches: [ "main" ]
+  workflow_dispatch:
 
 jobs:
   build-windows-exe:
@@ -29,5 +30,5 @@ jobs:
       - name: Envoyer l’exécutable comme artefact
         uses: actions/upload-artifact@v4
         with:
-          name: NStreamIng
-          path: dist/main.exe
+          name: NStreaming
+          path: dist/app.exe
