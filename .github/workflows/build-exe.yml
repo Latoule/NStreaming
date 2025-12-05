@@ -24,11 +24,45 @@ jobs:
           pip install -r requirements.txt
           pip install pyinstaller
 
-      - name: Générer l'exécutable
-        run: pyinstaller --onefile --collect-all flask --collect-all requests app.py
+      - name: Créer un fichier spec PyInstaller
+        run: |
+          echo "import sys
+from PyInstaller.utils.hooks import collect_all, collect_submodules
+block_cipher = None
+a = Analysis(
+    ['app.py'],
+    pathex=[],
+    binaries=[],
+    datas=[],
+    hiddenimports=collect_submodules('flask') + collect_submodules('requests'),
+    hookspath=[],
+    runtime_hooks=[],
+    excludes=[],
+    win_no_prefer_redirects=False,
+    win_private_assemblies=False,
+    cipher=block_cipher,
+)
+pyz = PYZ(a.pure)
+exe = EXE(
+    pyz,
+    a.scripts,
+    [],
+    exclude_binaries=True,
+    name='NStreaming',
+    debug=False,
+    bootloader_ignore_signals=False,
+    strip=False,
+    upx=True,
+    console=True,
+)
+coll = COLLECT(exe, a.binaries, a.zipfiles, a.datas, strip=False, upx=True, name='NStreaming')
+" > app.spec
+
+      - name: Générer l'exécutable avec le spec
+        run: pyinstaller app.spec
 
       - name: Envoyer l’exécutable comme artefact
         uses: actions/upload-artifact@v4
         with:
           name: NStreaming
-          path: dist/app.exe
+          path: dist/NStreaming/NStreaming.exe
