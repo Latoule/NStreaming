@@ -1,0 +1,64 @@
+
+<!doctype html>
+<html lang="fr">
+<head>
+    <meta charset="utf-8">
+    <title>NStreamIng</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="navbar">
+        <div class="buttons">
+            <a href="/tv/p/1"><img class="movie_btn" src="{{url_for('static', filename='vod.png')}}"></a>
+            <a href="/movie/p/1"><img class="movie_btn" src="{{url_for('static', filename='movies.png')}}"></a>
+        </div>
+        <div class="logo">
+            <h1 class="icon"><a href="/">NStreamIng</a></h1>
+        </div>
+        <div class="search">
+            <form action="/search">
+                <input class="search_bar" type="text" name="q" placeholder="Rechercher...">
+            </form>
+        </div>
+    </div>
+    
+    <div class="body2">
+        <div class="scrolling-wrapper-genre">
+            {% for genre in genres %}
+            <a href="{{ url_for('genre_tv', genre=genre['name'], nb_page=1) }}">
+                <p>{{ genre['name'] }}</p>
+            </a>
+            {% endfor %}
+        </div>
+        <div class="notscrolling-wrapper">
+            {% for movie in trending_tv + rated_tv %}
+            <a href="{{ url_for('tv_detail', tv_id=movie.id, season=1, episode=1)  }}" class="movie-card">
+                <img src="{{ base_img_url }}{{ movie.poster_path }}" alt="{{ movie.title }}">
+                <p>{{ movie.title }}</p>
+            </a>
+            {% endfor %}
+        </div>
+        <div class="page_select">
+            {% if nb_page > 2 %}
+                <a class="nb_page" href="{{url_for('tv', nb_page=nb_page-2)}}"><<</a>
+                <a class="nb_page" href="{{url_for('tv', nb_page=nb_page-1)}}">{{nb_page-1}}</a>
+                <a class="nb_page_selected" href="{{url_for('tv', nb_page=nb_page)}}">{{nb_page}}</a>
+                <a class="nb_page" href="{{url_for('tv', nb_page=nb_page+1)}}">{{nb_page+1}}</a>
+                <a class="nb_page" href="{{url_for('tv', nb_page=nb_page+2)}}">>></a>
+            {% endif %}
+            {% if nb_page == 2 %}
+                <a class="nb_page" href="{{url_for('tv', nb_page=nb_page-1)}}">{{nb_page-1}}</a>
+                <a class="nb_page_selected" href="{{url_for('tv', nb_page=nb_page)}}">{{nb_page}}</a>
+                <a class="nb_page" href="{{url_for('tv', nb_page=nb_page+1)}}">{{nb_page+1}}</a>
+                <a class="nb_page" href="{{url_for('tv', nb_page=nb_page+2)}}">>></a>
+            {% endif %}
+            {% if nb_page == 1 %}
+                <a class="nb_page_selected" href="{{url_for('tv', nb_page=1)}}">1</a>
+                <a class="nb_page" href="{{url_for('tv', nb_page=2)}}">2</a>
+                <a class="nb_page" href="{{url_for('tv', nb_page=3)}}">3</a>
+                <a class="nb_page" href="{{url_for('tv', nb_page=4)}}">>></a>
+            {% endif %}
+        </div>
+    </div>    
+</body>
+</html>

@@ -1,0 +1,277 @@
+
+        @font-face {
+            font-family: '04b_19';
+            src: url('./fonts/04B_19__.TTF');
+            font-weight: normal;
+            font-style: normal;
+        }
+        @font-face {
+            font-family: '04b_30';
+            src: url('./fonts/04B_30__.TTF');
+            font-weight: normal;
+            font-style: normal;
+        }
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #121212;
+            color: #fff;
+            margin: 0;
+            padding: 0;
+        }
+        .body2 {
+            padding: 20px;            
+        }
+        .scrolling-wrapper {
+            display: flex;
+            overflow-x: auto;
+            padding: 10px;
+            gap: 15px;
+        }
+        .movie-card {
+            flex: 0 0 auto;
+            width: 200px;
+            border-radius: 10px;
+            overflow: hidden;
+            background-color: #1e1e1e;
+            text-align: center;
+        }
+        .movie-card img {
+            width: 100%;
+            display: block;
+        }
+        .movie-card p {
+            font-family: '04b_19';
+            margin: 5px 0;
+            padding: 5px;
+        }
+        .scrolling-wrapper a.movie-card {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        .movie-card img {
+            width: 100%;
+            display: block;
+            border-radius: 10px;
+        }
+
+        .movie-card p {
+            margin: 5px 0;
+            padding: 5px;
+            text-align: center;
+        }
+        .part {
+            font-family: '04b_19', sans-serif;
+        }
+
+        .navbar {
+            width: 100%;
+            background-color: #0c0c0c;
+            color: white;
+            display: flex;
+            position: relative;
+            top: 0;
+            left: 0;
+            z-index: 1000;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 2px 5px rgba(195, 191, 191, 0.1);
+        }
+        .icon {
+            font-family: '04b_30', sans-serif;
+        }
+        .logo {
+            padding-right: 2%;
+            padding-left: 2%;
+
+        }
+
+        .logo a {
+            text-decoration: none;
+            color: inherit;  
+        }
+
+        .scrollBarStyled {
+            background-color: #0c0c0c;
+            border-radius: 5px;
+            color: white;
+            font-family: '04b_19';
+            width: 7vw;
+            height: 1.5vw;
+            font-size: medium;
+            text-align: center;
+            margin: 0.5vw;
+            margin-top: 1vw;
+            position: absolute;
+        }
+        .season_button {
+            text-decoration: none;
+            color: inherit;  
+        }
+        .seasons {
+            width: 100%;
+            color: white;
+            display: flex;
+            position: relative;
+            top: 0;
+            left: 0;
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+        .season {
+            padding: 1vw;
+            padding-right: 2vw;
+            padding-left: 2vw;
+            margin: 0.5vw;
+            position: relative;
+            background-color: #0c0c0c;
+            border-radius: 7px;
+            color: white;
+            font-family: '04b_19';
+            border: 1px solid #e8cece;
+            box-shadow: 0 2px 5px 5px rgba(195, 191, 191, 0.1);
+        }
+        .season_button {
+            font-family: '04b_19';
+        }
+        .overview {
+            display: flex;
+            align-items: flex-start;
+            gap: 20px;
+        }
+
+        .poster {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .poster img {
+            width: 200px;
+            margin-top: 10px;
+            border-radius: 10px;
+            border: 10px groove #625656;
+        }
+
+        .desc {
+            margin-top: 85px;
+            width: 25%;
+            text-align: center;
+            font-family: '04b_30';
+        }
+        .BA {
+            margin-top: 85px;
+            border-radius: 15px;
+            border: 1px solid white;
+        }
+        .media {
+            border-radius: 15px;
+            border: 1px  solid #232323;
+            margin-top: 0.8vw;
+        }
+
+        .notscrolling-wrapper {
+            display: flex;
+            padding: 10px;
+            gap: 15px;
+            display: flex;
+            flex-wrap: wrap;
+            align-content: center;
+            justify-content: space-between;
+            margin: 0;
+            margin-top: 1vw;
+        }
+        .notscrolling-wrapper a.movie-card {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        .scrolling-wrapper-genre {
+            display: flex;
+            overflow-x: auto;
+            overflow-y: hidden;
+            padding: 10px;
+            gap: 15px;
+            height: 5vw;
+            text-align: center;
+        }
+        .genre_name {
+            font-family: '04b_19';
+        }
+
+        .scrolling-wrapper-genre a {
+            text-decoration: none;
+            color: inherit;
+            align-self: center;
+
+            padding: 0.7vw;
+            padding-right: 2vw;
+            padding-left: 2vw;
+            margin: 0.5vw;
+            position: relative;
+            background-color: #0c0c0c;
+            border-radius: 7px;
+            color: white;
+            font-family: '04b_19';
+            border: 1px solid #e8cece;
+            box-shadow: 0 2px 5px 5px rgba(195, 191, 191, 0.1);
+        }
+
+        .notscrolling-wrapper-result {
+            display: flex;
+            padding: 10px;
+            gap: 15px;
+            display: flex;
+            flex-wrap: wrap;
+            align-content: center;
+            justify-content:center;
+            margin: 0;
+            margin-top: 1vw;
+        }
+        
+        .notscrolling-wrapper-result a.movie-card {
+            text-decoration: none;
+            color: inherit;
+        }
+        
+        .search_bar {
+            background-color: #0c0c0c;
+            border: none;
+            border-radius: 5px;
+            color: white;
+            font-family: '04b_19', sans-serif;
+            width: 7vw;
+            height: 1.5vw;
+            font-size: medium;
+            text-align: center;
+            margin-right: 5vw;
+        }
+        .search {
+            margin: 10;
+            margin-left: 8vw;
+        }
+        .nb_page, .nb_page_selected {
+            padding: 5px 10px;
+            text-decoration: none;
+            font-family: '04b_19';
+            color: inherit;
+        }
+
+        .nb_page_selected {
+            color: #b5a7a7;
+            text-decoration: underline;
+        }
+        .page_select {
+            display: flex;
+            justify-content: center;
+            gap: 0.2vw;
+        }
+        .movie_btn{
+            width: 17%;
+            padding-left: 2vw;
+        }
+        .buttons{
+            padding-left: 2vw;
+        }

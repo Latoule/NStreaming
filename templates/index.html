@@ -1,0 +1,64 @@
+
+<!doctype html>
+<html lang="fr">
+<head>
+    <meta charset="utf-8">
+    <title>NStreamIng</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="navbar">
+        <div class="buttons">
+            <a href="/tv/p/1"><img class="movie_btn" src="{{url_for('static', filename='vod.png')}}"></a>
+            <a href="/movie/p/1"><img class="movie_btn" src="{{url_for('static', filename='movies.png')}}"></a>
+        </div>
+        <div class="logo">
+            <h1 class="icon"><a href="/">NStreamIng</a></h1>
+        </div>
+        <div class="search">
+            <form action="/search">
+                <input class="search_bar" type="text" name="q" placeholder="Rechercher...">
+            </form>
+        </div>
+    </div>
+    
+    <div class="body2">
+        <h1 class="part">Films Populaires</h1>
+        <div class="scrolling-wrapper">
+            {% for movie in trending_movies %}
+            <a href="{{ url_for('movie_detail', movie_id=movie.id) }}" class="movie-card">
+                <img src="{{ base_img_url }}{{ movie.poster_path }}" alt="{{ movie.title }}">
+                <p>{{ movie.title }}</p>
+            </a>
+            {% endfor %}
+        </div>
+        <h1 class="part">Films Les Mieux Notes</h1>
+        <div class="scrolling-wrapper">
+            {% for movie in rated_movies %}
+            <a href="{{ url_for('movie_detail', movie_id=movie.id) }}" class="movie-card">
+                <img src="{{ base_img_url }}{{ movie.poster_path }}" alt="{{ movie.title }}">
+                <p>{{ movie.title }}</p>
+            </a>
+            {% endfor %}
+        </div>
+        <h1 class="part">Series Populaires</h1>
+        <div class="scrolling-wrapper">
+            {% for movie in trending_tv %}
+            <a href="{{ url_for('tv_detail', tv_id=movie.id, season=1, episode=1) }}" class="movie-card">
+                <img src="{{ base_img_url }}{{ movie.poster_path }}" alt="{{ movie.title }}">
+                <p>{{ movie.title }}</p>
+            </a>
+            {% endfor %}
+        </div>
+        <h1 class="part">Series Les Mieux Notes</h1>
+        <div class="scrolling-wrapper">
+            {% for movie in rated_tv %}
+            <a href="{{ url_for('tv_detail', tv_id=movie.id, season=1, episode=1) }}" class="movie-card">
+                <img src="{{ base_img_url }}{{ movie.poster_path }}" alt="{{ movie.title }}">
+                <p>{{ movie.title }}</p>
+            </a>
+            {% endfor %}
+        </div>
+    </div>    
+</body>
+</html>

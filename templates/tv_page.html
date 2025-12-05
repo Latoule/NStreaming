@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>{{movie.title}}</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="navbar">
+        <div class="buttons">
+            <a href="/tv/p/1"><img class="movie_btn" src="{{url_for('static', filename='vod.png')}}"></a>
+            <a href="/movie/p/1"><img class="movie_btn" src="{{url_for('static', filename='movies.png')}}"></a>
+        </div>
+        <div class="logo">
+            <h1 class="icon"><a href="/">NStreamIng</a></h1>
+        </div>
+        <div class="search">
+            <form action="/search">
+                <input class="search_bar" type="text" name="q" placeholder="Rechercher...">
+            </form>
+        </div>
+    </div>
+    <div class="body2">
+        <div class="overview">
+            <div class="poster">
+                <h1 class="part">{{ movie.title }}</h1>
+                {% if movie.poster_path %}
+                    <img src="{{ base_img_url }}{{ movie.poster_path }}" alt="{{ movie.title }}" style="width:200px;">
+                {% endif %}
+            </div>
+            <p class="desc">{{ movie.overview }}</p>
+            <div style="width: 40%; height: 600px; margin: auto;">
+                <iframe class="BA" width="100%" height="400px" src={{BA}} title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+            </div>
+            
+        </div>
+        
+        <div class="seasons">
+            {% for i in seasons %}
+                <div class="season">
+                    <a class="season_button" href="{{ url_for('tv_detail', tv_id=movie.id, season=i+1, episode=1) }}">Saison {{i+1}}</a>
+                </div>
+            {% endfor %}
+        </div>
+        <select id="episodeSelect" onchange="window.location.href=this.value;" class="scrollBarStyled">
+            {% for episode in nb_episodes %}
+                <option value="{{ url_for('tv_detail', tv_id=movie.id, season=season, episode=episode+1) }}">
+                    Episode {{ episode + 1 }}
+                </option>
+            {% endfor %}
+        </select>
+        <script>
+            const currentEpisodeUrl = "{{ url_for('tv_detail', tv_id=movie.id, season=season, episode=current_episode) }}";
+            document.getElementById("episodeSelect").value = currentEpisodeUrl;
+        </script>
+
+        <div style="width: 50%; height: 600px; margin: auto;">
+            <iframe class="media" src="{{frembed_url}}/api/serie.php?id={{movie.id}}&sa={{season}}&epi={{current_episode}}" width="100%" height="500px" frameborder="0" allowfullscreen="yes" scrolling="no" style="overflow:hidden;"></iframe>
+        </div>
+    </div>
+</body>
+</html>
